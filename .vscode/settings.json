@@ -1,0 +1,42 @@
+{
+    "java.project.referencedLibraries": [
+        "c:\\xampp\\tomcat\\lib\\annotations-api.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-i18n-ru.jar",
+        "c:\\xampp\\tomcat\\lib\\catalina-ha.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-i18n-de.jar",
+        "c:\\xampp\\tomcat\\lib\\catalina-ant.jar",
+        "c:\\xampp\\tomcat\\lib\\websocket-api.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-jdbc.jar",
+        "c:\\xampp\\tomcat\\lib\\el-api.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-api.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-coyote.jar",
+        "c:\\xampp\\tomcat\\lib\\catalina-tribes.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-i18n-ko.jar",
+        "c:\\xampp\\tomcat\\lib\\mariadb-java-client-3.4.1.jar",
+        "c:\\xampp\\tomcat\\lib\\ecj-4.4.2.jar",
+        "c:\\xampp\\tomcat\\lib\\jasper.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-dbcp.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-util.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-i18n-ja.jar",
+        "c:\\xampp\\tomcat\\lib\\jsp-api.jar",
+        "c:\\xampp\\tomcat\\lib\\servlet-api.jar",
+        "c:\\xampp\\tomcat\\lib\\jasper-el.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-i18n-es.jar",
+        "c:\\xampp\\tomcat\\lib\\catalina.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat7-websocket.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-i18n-fr.jar",
+        "c:\\xampp\\tomcat\\lib\\tomcat-i18n-zh-CN.jar",
+        "c:\\xampp\\tomcat\\lib\\jackson-annotations-2.15.3.jar",
+        "c:\\xampp\\tomcat\\lib\\jackson-core-2.15.3.jar",
+        "c:\\xampp\\tomcat\\lib\\jackson-databind-2.15.3.jar",
+        "c:\\xampp\\tomcat\\lib\\jackson-dataformat-xml-2.15.3.jar",
+        "c:\\xampp\\tomcat\\lib\\jjwt-api-0.12.5.jar",
+        "c:\\xampp\\tomcat\\lib\\jjwt-impl-0.12.5.jar",
+        "c:\\xampp\\tomcat\\lib\\jjwt-jackson-0.12.5.jar",
+        "c:\\xampp\\tomcat\\lib\\stax2-api-4.2.2.jar"
+    ],
+    "java.project.sourcePaths": [
+        "WEB-INF\\src"
+    ],
+    "java.project.outputPath": "WEB-INF\\classes"
+}

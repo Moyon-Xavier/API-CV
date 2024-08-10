@@ -52,7 +52,7 @@ public class PeriodDAO {
                 period = new PeriodDTO(perno, title);
             } else {
                 period = new PeriodDTO(-1, "periode non trouvée dans la base de données");
-                throw new DataNotFoundException("periode " + id + " non trouvé");
+                throw new DataNotFoundException("periode " + id + " non trouvée");
             }
 
         } catch (Exception e) {

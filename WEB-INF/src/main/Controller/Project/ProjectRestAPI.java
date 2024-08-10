@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import main.DAO.Project.PeriodDAO;
+import main.DAO.Project.ProjectDAO;
 import main.DTO.Project.PeriodDTO;
+import main.DTO.Project.ProjectDTO;
 
-@WebServlet("/period/*")
-public class PeriodRestAP extends HttpServlet {
-    private PeriodDAO dao = new PeriodDAO();
+@WebServlet("/project/*")
+public class ProjectRestAPI extends HttpServlet {
+    private ProjectDAO dao = new ProjectDAO();
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("application/json;charset=UTF-8");
@@ -25,11 +26,12 @@ public class PeriodRestAP extends HttpServlet {
         ObjectMapper objectMapper = new ObjectMapper();
         String info = req.getPathInfo();
         String[] split = info.split("/");
-        if (info == null || info.equals("/")) {
-            Collection<PeriodDTO> periods = dao.getAllPeriod();
-            String jsonstring = objectMapper.writeValueAsString(periods);
-            out.println(jsonstring);
-            return;
+        if (info == null || info.equals("/")) {/*
+                                                * Collection<PeriodDTO> periods = dao.getAllPeriod();
+                                                * String jsonstring = objectMapper.writeValueAsString(periods);
+                                                * out.println(jsonstring);
+                                                * return;
+                                                */
         }
 
         if (split.length > 2) {
@@ -38,11 +40,11 @@ public class PeriodRestAP extends HttpServlet {
         } else {
             try {
                 int code = Integer.parseInt(split[1]);
-                PeriodDTO period = dao.getPeriodById(code);
-                if (period.getPerno() == -1) {
+                ProjectDTO projet = dao.getProjectById(code);
+                if (projet.getProno() == -1) {
                     res.sendError(HttpServletResponse.SC_NOT_FOUND);
                 } else {
-                    String jsoString = objectMapper.writeValueAsString(period);
+                    String jsoString = objectMapper.writeValueAsString(projet);
                     out.println(jsoString);
                 }
 
@@ -57,5 +59,4 @@ public class PeriodRestAP extends HttpServlet {
         return;
 
     }
-
 }
