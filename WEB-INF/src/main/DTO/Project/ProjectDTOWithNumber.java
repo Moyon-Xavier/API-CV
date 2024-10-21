@@ -10,14 +10,25 @@ public class ProjectDTOWithNumber {
     int perno;
     String description;
     List<Integer> requirements;
+    String imageURL;
 
-    public ProjectDTOWithNumber(int prono, String projectName, String dateProject, int perno, String description) {
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public ProjectDTOWithNumber(int prono, String projectName, String dateProject, int perno, String descriptio,
+            String iamgeURL) {
         this.prono = prono;
         this.projectName = projectName;
         this.dateProject = dateProject;
         this.perno = perno;
         this.description = description;
         this.requirements = new ArrayList<>();
+        this.imageURL = imageURL;
     }
 
     public int getProno() {

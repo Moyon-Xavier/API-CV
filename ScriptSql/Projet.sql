@@ -16,7 +16,9 @@ Create Table project(
     projectName varchar(255),
     dateproject date,
     perno int,
+    imageUrl varchar(600),
     description varchar(1200),
+
     Constraint pk_Projet primary key (prono),
     Constraint fk_period foreign key (perno)
         references period (perno) 

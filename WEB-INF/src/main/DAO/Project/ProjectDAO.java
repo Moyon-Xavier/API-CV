@@ -69,13 +69,15 @@ public class ProjectDAO {
                 String dateProject = rs.getString("dateproject");
                 int perno = rs.getInt("perno");
                 String description = rs.getString("description");
-                projet = new ProjectDTOWithNumber(prono, projectName, dateProject, perno, description);
+                String imageUrl = rs.getString("imageUrl");
+                projet = new ProjectDTOWithNumber(prono, projectName, dateProject, perno, description, imageUrl);
                 getProjectRequirements(projet, con);
                 projetFinal = new ProjectDTO(prono, projectName, dateProject, perno, description,
-                        projet.getRequirements());
+                        projet.getRequirements(), imageUrl);
 
             } else {
-                projetFinal = new ProjectDTO(-1, "periode non trouvée dans la base de données", null, null, null, null);
+                projetFinal = new ProjectDTO(-1, "periode non trouvée dans la base de données", null, null, null, null,
+                        null);
                 throw new DataNotFoundException("periode " + id + " non trouvée");
             }
 
@@ -90,4 +92,41 @@ public class ProjectDAO {
         }
         return projetFinal;
     }
+
+    public List<ProjectDTO> getAllProject() {
+        List<ProjectDTO> projets = new ArrayList<>();
+        ProjectDTOWithNumber projet = null;
+        ProjectDTO projetFinal = null;
+        Connection con = null;
+        try {
+            con = DB.getConnection();
+            PreparedStatement ps = con.prepareStatement("select * From project ");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int prono = rs.getInt("prono");
+                String projectName = rs.getString("projectName");
+                String dateProject = rs.getString("dateproject");
+                int perno = rs.getInt("perno");
+                String description = rs.getString("description");
+                String imageUrl = rs.getString("imageUrl");
+                projet = new ProjectDTOWithNumber(prono, projectName, dateProject, perno, description, imageUrl);
+                getProjectRequirements(projet, con);
+                projetFinal = new ProjectDTO(prono, projectName, dateProject, perno, description,
+                        projet.getRequirements(), imageUrl);
+                projets.add(projetFinal);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return projets;
+    }
+
 }

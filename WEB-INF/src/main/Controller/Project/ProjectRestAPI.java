@@ -22,6 +22,7 @@ public class ProjectRestAPI extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("application/json;charset=UTF-8");
+        res.addHeader("Access-Control-Allow-Origin", "*");
         PrintWriter out = res.getWriter();
         ObjectMapper objectMapper = new ObjectMapper();
         String info = req.getPathInfo();

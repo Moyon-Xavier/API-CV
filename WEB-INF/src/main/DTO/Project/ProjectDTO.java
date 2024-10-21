@@ -3,6 +3,8 @@ package main.DTO.Project;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.DocFlavor.STRING;
+
 import main.DAO.Project.PeriodDAO;
 import main.DAO.Project.SkillsDAO;
 
@@ -16,9 +18,18 @@ public class ProjectDTO {
     PeriodDTO period;
     String description;
     List<SkillsDTO> requirements;
+    String imageURL;
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 
     public ProjectDTO(int prono, String projectName, String dateProject,
-            Integer period, String description, List<Integer> requirements) {
+            Integer period, String description, List<Integer> requirements, String imageURL) {
 
         this.prono = prono;
         this.projectName = projectName;
@@ -26,6 +37,7 @@ public class ProjectDTO {
         this.period = convertIntegerToPeriodDTO(period);
         this.description = description;
         this.requirements = convertListIntegerToListSkillDTO(requirements);
+        this.imageURL = imageURL;
     }
 
     private PeriodDTO convertIntegerToPeriodDTO(int period) {
