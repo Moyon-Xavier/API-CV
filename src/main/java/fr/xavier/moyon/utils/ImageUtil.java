@@ -4,7 +4,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.annotation.XmlElement.DEFAULT;
+//import javax.xml.bind.annotation.XmlElement.DEFAULT;
 
 import java.awt.Image;
 import java.awt.image.*;
