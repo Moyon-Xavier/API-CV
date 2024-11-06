@@ -1,0 +1,36 @@
+services:
+  frontend:
+    image: tomcat:jdk21-openjdk-bookworm
+    ports:
+      - "8080:8043"
+    networks:
+      - front-tier
+      - back-tier
+    configs:
+      - httpd-config
+    secrets:
+      - server-certificate
+
+  backend:
+    image: postgres
+    volumes:
+      - db-data:/etc/data
+    networks:
+      - back-tier
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_USER: test
+
+
+#configs:
+#  httpd-config:
+#    external: true
+
+#secrets:
+#  server-certificate:
+#    external: true
+
+networks:
+  # The presence of these objects is sufficient to define them
+  front-tier: {}
+  back-tier: {}
