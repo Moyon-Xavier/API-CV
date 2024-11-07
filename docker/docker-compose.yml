@@ -1,0 +1,35 @@
+services:
+  frontend:
+    image: tomcat:jdk21-openjdk-bookworm
+    ports:
+      - "8080:8080"
+    networks:
+      - front-tier
+      - back-tier
+    configs:
+      - httpd-config
+    command: bash -c "apt-get update -y && apt-get install -y maven && cd /usr/local/tomcat/webapps && mvn clean package && cp -r /usr/local/tomcat/webapps/target/test /usr/local/tomcat/webapps && /usr/local/tomcat/bin/catalina.sh run"
+#    tty: true 
+    tty: true
+    volumes:
+      - ../project:/usr/local/tomcat/webapps
+
+#    secrets:
+#      - server-certificate
+
+  backend:
+    image: postgres
+#    volumes:
+#      - db-data:/etc/data
+    networks:
+      - back-tier
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_USER: test
+
+
+
+networks:
+  # The presence of these objects is sufficient to define them
+  front-tier: {}
+  back-tier: {}
