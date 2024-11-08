@@ -1,4 +1,4 @@
-INSERT INTO period Values
+INSERT INTO Period Values
 (1,'BUT2'),
 (0,'BUT1');
 INSERT INTO `project` (`projectName`, `dateproject`, `perno`, `description`,`imageUrl`) VALUES

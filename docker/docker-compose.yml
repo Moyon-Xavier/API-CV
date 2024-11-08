@@ -1,35 +1,37 @@
 services:
-  frontend:
-    image: tomcat:jdk21-openjdk-bookworm
-    ports:
-      - "8080:8080"
-    networks:
-      - front-tier
-      - back-tier
-    configs:
-      - httpd-config
-    command: bash -c "apt-get update -y && apt-get install -y maven && cd /usr/local/tomcat/webapps && mvn clean package && cp -r /usr/local/tomcat/webapps/target/test /usr/local/tomcat/webapps && /usr/local/tomcat/bin/catalina.sh run"
-#    tty: true 
-    tty: true
-    volumes:
-      - ../project:/usr/local/tomcat/webapps
+#  frontend:
+#    image: tomcat:jdk21-openjdk-bookworm
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - front-tier
+#      - back-tier
+#    configs:
+#      - httpd-config
+#    command: bash -c "apt-get update -y && apt-get install -y maven  && cd /usr/local/tomcat/webapps  && mvn clean package && cp -r /usr/local/tomcat/webapps/target/test /usr/local/tomcat/webapps && rm -rf  /usr/local/tomcat/webapps/target   && /usr/local/tomcat/bin/catalina.sh run"
+#    tty: true
+#    volumes:
+#      - ../project:/usr/local/tomcat/webapps
 
-#    secrets:
-#      - server-certificate
 
   backend:
-    image: postgres
-#    volumes:
-#      - db-data:/etc/data
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../ScriptSql:/home
+      - ../db-data:/var/lib/postgresql/data
     networks:
       - back-tier
     environment:
-      POSTGRES_PASSWORD: test
-      POSTGRES_USER: test
-
+      #MYSQL_USER: user
+      #MYSQL_PASSWORD: mypassword
+      #MYSQL_DATABASE: my_database
+      #MYSQL_ROOT_PASSWORD: rootpassword
+      #MARIADB_ROOT_PASSWORD: test
+      POSTGRES_PASSWORD: example
 
 
 networks:
-  # The presence of these objects is sufficient to define them
   front-tier: {}
   back-tier: {}

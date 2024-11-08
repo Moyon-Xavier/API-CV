@@ -21,7 +21,7 @@ Create Table project(
 
     Constraint pk_Projet primary key (prono),
     Constraint fk_period foreign key (perno)
-        references period (perno) 
+    references Period (perno) 
 );
 
 Create Table Requirement(
