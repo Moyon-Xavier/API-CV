@@ -1,4 +1,5 @@
 package fr.xavier.moyon.utils;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,10 +9,11 @@ import java.sql.Statement;
 public class DB {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
 
-        Class.forName("org.mariadb.jdbc.Driver");
-        String url = "jdbc:mariadb://localhost:3306/CV";
-        String user = "root";
-        String mdp = "";
+        Class.forName("org.postgresql.Driver");
+        String url = "jdbc:postgresql://172.20.0.2:5432/cv";
+        //String url = "jdbc:postgresql://docker-backend-1:5432/CV";
+	String user = "postgres";
+        String mdp = "example";
         return DriverManager.getConnection(url, user, mdp);
     }
 

@@ -1,18 +1,18 @@
 Create Table Period(
-    perno int NOT NULL AUTO_INCREMENT,
+    perno SERIAL,
     name varchar(255),
     Constraint pk_perno primary key (perno)
 );
 
 Create Table skills(
-    skino int NOT NULL AUTO_INCREMENT,
+    skino Serial,
     Title varchar(255),
     Constraint pk_skinoTitle primary key (skino,Title)
 );
 
 
 Create Table project(
-    prono int NOT NULL AUTO_INCREMENT,
+    prono Serial,
     projectName varchar(255),
     dateproject date,
     perno int,
@@ -25,7 +25,7 @@ Create Table project(
 );
 
 Create Table Requirement(
-    skino int NOT NULL AUTO_INCREMENT,
+    skino SERIAL,
     prono int,
     Constraint pk_ProjectSkill primary key(skino,prono),
      Constraint fk_project foreign key (prono)
