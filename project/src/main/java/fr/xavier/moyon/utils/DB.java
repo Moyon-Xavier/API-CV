@@ -10,9 +10,9 @@ public class DB {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
 
         Class.forName("org.postgresql.Driver");
-        String url = "jdbc:postgresql://172.20.0.2:5432/cv";
-        //String url = "jdbc:postgresql://docker-backend-1:5432/CV";
-	String user = "postgres";
+        String url = "jdbc:postgresql://backend:5432/cv";
+        // String url = "jdbc:postgresql://docker-backend-1:5432/CV";
+        String user = "postgres";
         String mdp = "example";
         return DriverManager.getConnection(url, user, mdp);
     }
