@@ -44,7 +44,6 @@ public class ProjectRestAPI extends HttpServlet {
                 if (projet == null) {
                     res.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
-                System.out.println(projet.toString());
                 if (projet.getProno() == -1) {
                     res.sendError(HttpServletResponse.SC_NOT_FOUND);
                 } else {

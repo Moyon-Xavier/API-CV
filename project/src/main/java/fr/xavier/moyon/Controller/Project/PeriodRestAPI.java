@@ -39,6 +39,9 @@ public class PeriodRestAPI extends HttpServlet {
             try {
                 int code = Integer.parseInt(split[1]);
                 PeriodDTO period = dao.getPeriodById(code);
+                if (period == null) {
+                    res.sendError(HttpServletResponse.SC_NOT_FOUND);
+                }
                 if (period.getPerno() == -1) {
                     res.sendError(HttpServletResponse.SC_NOT_FOUND);
                 } else {
