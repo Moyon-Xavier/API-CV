@@ -8,10 +8,10 @@ services:
       - back-tier
 #    configs:
 #      - httpd-config
-    command: bash -c "apt-get update -y && apt-get install -y maven  && cd /usr/local/tomcat/webapps  && mvn clean package && cp -r /usr/local/tomcat/webapps/target/test /usr/local/tomcat/webapps && rm -rf  /usr/local/tomcat/webapps/target   && /usr/local/tomcat/bin/catalina.sh run"
+    command: bash -c "apt-get update -y && apt-get install -y maven  && cd /usr/local/tomcat/ && cp -r /project/src /usr/local/tomcat/webapps/ && cp /project/pom.xml /usr/local/tomcat/webapps/ && cd /usr/local/tomcat/webapps  && mvn clean package && cp -r /usr/local/tomcat/webapps/target/test /usr/local/tomcat/webapps && rm -rf  /usr/local/tomcat/webapps/target && rm /usr/local/tomcat/webapps/pom.xml && rm -rf /usr/local/tomcat/webapps/src && /usr/local/tomcat/bin/catalina.sh run"
 #    tty: true
     volumes:
-      - ../project:/usr/local/tomcat/webapps
+      - ../project:/project
 
 
   backend:
