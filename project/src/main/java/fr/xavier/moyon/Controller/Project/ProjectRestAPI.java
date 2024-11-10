@@ -26,12 +26,12 @@ public class ProjectRestAPI extends HttpServlet {
         ObjectMapper objectMapper = new ObjectMapper();
         String info = req.getPathInfo();
         String[] split = info.split("/");
-        if (info == null || info.equals("/")) {/*
-                                                * Collection<PeriodDTO> periods = dao.getAllPeriod();
-                                                * String jsonstring = objectMapper.writeValueAsString(periods);
-                                                * out.println(jsonstring);
-                                                * return;
-                                                */
+        if (info == null || info.equals("/")) {
+            Collection<ProjectDTO> projects = dao.getAllProject();
+            String jsonstring = objectMapper.writeValueAsString(projects);
+            out.println(jsonstring);
+            return;
+
         }
 
         if (split.length > 2) {
@@ -41,6 +41,9 @@ public class ProjectRestAPI extends HttpServlet {
             try {
                 int code = Integer.parseInt(split[1]);
                 ProjectDTO projet = dao.getProjectById(code);
+                if (projet == null) {
+                    res.sendError(HttpServletResponse.SC_NOT_FOUND);
+                }
                 System.out.println(projet.toString());
                 if (projet.getProno() == -1) {
                     res.sendError(HttpServletResponse.SC_NOT_FOUND);
