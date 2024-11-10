@@ -149,6 +149,8 @@ public class ProjectDAO {
                 getProjectRequirements(projet, con);
                 projetFinal = new ProjectDTO(prono, projectName, dateProject, perno, description,
                         projet.getRequirements(), imageUrl);
+                        this.getProjectLink(projetFinal, con);
+                        this.getProjectYtbLink(projetFinal, con);
                 projets.add(projetFinal);
 
             }
