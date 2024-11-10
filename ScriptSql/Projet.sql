@@ -7,7 +7,7 @@ Create Table Period(
 Create Table skills(
     skino Serial,
     Title varchar(255),
-    Constraint pk_skinoTitle primary key (skino,Title)
+    Constraint pk_skinoTitle primary key (skino)
 );
 
 
@@ -21,12 +21,12 @@ Create Table project(
 
     Constraint pk_Projet primary key (prono),
     Constraint fk_period foreign key (perno)
-    references Period (perno) 
+    	references Period (perno) 
 );
 
 Create Table Requirement(
     skino SERIAL,
-    prono int,
+    prono SERIAL,
     Constraint pk_ProjectSkill primary key(skino,prono),
      Constraint fk_project foreign key (prono)
         references project (prono),

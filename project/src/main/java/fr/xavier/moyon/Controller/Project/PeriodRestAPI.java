@@ -22,7 +22,9 @@ public class PeriodRestAPI extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("application/json;charset=UTF-8");
         PrintWriter out = res.getWriter();
-        ObjectMapper objectMapper = new ObjectMapper();
+	res.setContentType("application/json;charset=UTF-8");
+        res.addHeader("Access-Control-Allow-Origin", "*");        
+	ObjectMapper objectMapper = new ObjectMapper();
         String info = req.getPathInfo();
         String[] split = info.split("/");
         if (info == null || info.equals("/")) {
