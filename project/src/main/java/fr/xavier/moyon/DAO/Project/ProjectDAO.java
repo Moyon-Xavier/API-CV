@@ -9,6 +9,8 @@ import java.util.List;
 
 import fr.xavier.moyon.DTO.Project.ProjectDTO;
 import fr.xavier.moyon.DTO.Project.ProjectDTOWithNumber;
+import fr.xavier.moyon.DTO.Project.LinkDTO;
+import fr.xavier.moyon.DTO.Project.YTBLinkDTO;
 import fr.xavier.moyon.utils.DB;
 import fr.xavier.moyon.utils.Exception.DataNotFoundException;
 
@@ -53,6 +55,39 @@ public class ProjectDAO {
         }
 
     }
+    private void getProjectLink(ProjectDTO project,Connection con){
+        try {
+            List<LinkDTO> listLink = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement("Select * From linkInProject Where prono = ?");
+            ps.setInt(1, project.getProno());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                listLink.add(new LinkDTO(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4)));
+                
+            }
+            project.setLink(listLink);
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void getProjectYtbLink(ProjectDTO project,Connection con){
+        try {
+            List<YTBLinkDTO> listLink = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement("Select * From ytbLink Where prono = ?");
+            ps.setInt(1, project.getProno());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                listLink.add(new YTBLinkDTO(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4)));
+                
+            }
+            project.setYtbLink(listLink);
+        } catch (Exception e) {
+
+        }
+    }
 
     public ProjectDTO getProjectById(int id) {
         ProjectDTOWithNumber projet = null;
@@ -74,7 +109,8 @@ public class ProjectDAO {
                 getProjectRequirements(projet, con);
                 projetFinal = new ProjectDTO(prono, projectName, dateProject, perno, description,
                         projet.getRequirements(), imageUrl);
-
+                this.getProjectLink(projetFinal, con);
+                this.getProjectYtbLink(projetFinal, con);
             } else {
                 projetFinal = new ProjectDTO(-1, "periode non trouvée dans la base de données", null, null, null, null,
                         null);

@@ -56,3 +56,14 @@ INSERT into requirement VALUES
 (6,9),
 (8,9);  
 
+Insert into linkInProject Values
+(1,1,'Lien github xavier moyon','https://github.com/Moyon-Xavier'),
+(1,2,'Lien projet chasse au monstre','https://github.com/Moyon-Xavier/ChasseAuMonstre'),
+(2,1,'Lien youtube xavier moyon','https://www.youtube.com/@xavier4531'),
+(2,2,'Lien projet bdd','https://github.com/Moyon-Xavier/SAE1.4-BDD');
+
+
+Insert into ytbLink Values
+(1,1,'Video Save The Queen','https://youtu.be/sQVC-XPwBXs?si=Ht9TJDDMZ7BqSZHH'),
+(2,1,'Escape From BDD','https://youtu.be/bXrRq79nPlM?si=bUMKcYJQqRMvJpxN');
+

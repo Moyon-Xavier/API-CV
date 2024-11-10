@@ -10,6 +10,7 @@ public class ProjectDTOWithNumber {
     int perno;
     String description;
     List<Integer> requirements;
+    
     String imageURL;
 
     public String getImageURL() {

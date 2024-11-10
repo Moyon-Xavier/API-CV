@@ -16,9 +16,42 @@ public class ProjectDTO {
     String projectName;
     String dateProject;
     PeriodDTO period;
+    public ProjectDTO(SkillsDAO skillDao, PeriodDAO periodDao, int prono, String projectName, String dateProject,
+            PeriodDTO period, String description, List<SkillsDTO> requirements, List<LinkDTO> link, String imageURL) {
+        this.skillDao = skillDao;
+        this.periodDao = periodDao;
+        this.prono = prono;
+        this.projectName = projectName;
+        this.dateProject = dateProject;
+        this.period = period;
+        this.description = description;
+        this.requirements = requirements;
+        this.link = link;
+        this.imageURL = imageURL;
+    }
+
     String description;
     List<SkillsDTO> requirements;
+    List<LinkDTO> link;
+    List<YTBLinkDTO> ytbLink;
+
+    public List<YTBLinkDTO> getYtbLink() {
+        return ytbLink;
+    }
+
+    public void setYtbLink(List<YTBLinkDTO> ytbLink) {
+        this.ytbLink = ytbLink;
+    }
+
     String imageURL;
+
+    public List<LinkDTO> getLink() {
+        return link;
+    }
+
+    public void setLink(List<LinkDTO> link) {
+        this.link = link;
+    }
 
     public String getImageURL() {
         return imageURL;
