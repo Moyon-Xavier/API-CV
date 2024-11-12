@@ -64,6 +64,6 @@ Insert into linkInProject Values
 
 
 Insert into ytbLink Values
-(1,1,'Video Save The Queen','https://youtu.be/sQVC-XPwBXs?si=Ht9TJDDMZ7BqSZHH'),
+(1,1,'Video Save The Queen','https://www.youtube.com/watch?v=sQVC-XPwBXs'),
 (2,1,'Escape From BDD','https://youtu.be/bXrRq79nPlM?si=bUMKcYJQqRMvJpxN');
 

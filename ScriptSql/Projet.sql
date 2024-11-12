@@ -38,7 +38,7 @@ Create Table ytbLink(
     prono Serial,
     ytbno Serial,
     title varchar(255),
-    iframe varchar(290),
+    iframe varchar(500),
     Constraint pk_ytbno primary key (prono,ytbno),
     Constraint fk_ytbno_project foreign key (prono)
 	references project(prono)
