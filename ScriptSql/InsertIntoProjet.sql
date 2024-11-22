@@ -67,3 +67,9 @@ Insert into ytbLink Values
 (1,1,'Video Save The Queen','https://www.youtube.com/watch?v=sQVC-XPwBXs'),
 (2,1,'Escape From BDD','https://youtu.be/bXrRq79nPlM?si=bUMKcYJQqRMvJpxN');
 
+
+SELECT setval('project_prono_seq', max(prono)) FROM project;
+SELECT setval('ytblink_ytbno_seq', max(ytbno)) FROM ytblink;
+SELECT setval('skills_skino_seq', max(skino)) FROM skills;
+SELECT setval('period_perno_seq', max(perno)) FROM period;
+SELECT setval('linkinproject_linno_seq', max(linno)) FROM linkinproject;

@@ -10,7 +10,8 @@ public class ProjectDTOWithNumber {
     int perno;
     String description;
     List<Integer> requirements;
-    
+    //List<Integer> linnos;
+    //List<Integer> ytbnos;
     String imageURL;
 
     public String getImageURL() {
@@ -20,7 +21,7 @@ public class ProjectDTOWithNumber {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
-
+    public ProjectDTOWithNumber(){}
     public ProjectDTOWithNumber(int prono, String projectName, String dateProject, int perno, String descriptio,
             String iamgeURL) {
         this.prono = prono;
@@ -83,5 +84,21 @@ public class ProjectDTOWithNumber {
     public void addRequirements(Integer requirement) {
         requirements.add(requirement);
     }
+
+    /*public List<Integer> getLinnos() {
+        return linnos;
+    }
+
+    public void setLinnos(List<Integer> linnos) {
+        this.linnos = linnos;
+    }
+
+    public List<Integer> getYtbnos() {
+        return ytbnos;
+    }
+
+    public void setYtbnos(List<Integer> ytbnos) {
+        this.ytbnos = ytbnos;
+    }*/
 
 }

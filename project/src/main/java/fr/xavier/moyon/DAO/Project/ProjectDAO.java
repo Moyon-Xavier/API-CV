@@ -1,11 +1,15 @@
 package fr.xavier.moyon.DAO.Project;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.mysql.cj.xdevapi.PreparableStatement;
 
 import fr.xavier.moyon.DTO.Project.ProjectDTO;
 import fr.xavier.moyon.DTO.Project.ProjectDTOWithNumber;
@@ -130,6 +134,7 @@ public class ProjectDAO {
     }
 
     public List<ProjectDTO> getAllProject() {
+
         List<ProjectDTO> projets = new ArrayList<>();
         ProjectDTOWithNumber projet = null;
         ProjectDTO projetFinal = null;
@@ -165,6 +170,52 @@ public class ProjectDAO {
             }
         }
         return projets;
+    }
+
+    public ProjectDTO addProject(ProjectDTOWithNumber project)throws Exception{
+        Connection con = null;
+        ProjectDTO realProjet=null;
+        try {
+            Date date = Date.valueOf(project.getDateProject());
+            con = DB.getConnection();
+            PreparedStatement ps = con.prepareStatement("Insert into project(projectName, dateproject, perno, description,imageUrl) VALUES (?,?,?,?,?) returning *");
+            ps.setString(1, project.getProjectName());
+            ps.setDate(2, date);
+            ps.setInt(3,project.getPerno());
+            ps.setString(4, project.getDescription());
+            ps.setString(5, project.getImageURL());
+            ResultSet rs = ps.executeQuery();
+            int id=-1;
+            if (rs.next()){
+
+                id =rs.getInt(1);
+                ps = con.prepareStatement("Insert into requirement(skino,prono) VALUES(?,?)");
+               
+                for(Integer i : project.getRequirements()){
+                    ps.setInt(2,rs.getInt(1) );
+                    ps.setInt(1,i );
+                    try{
+                        ps.executeUpdate();
+                       
+                    }catch(Exception e){
+                        
+                        System.out.print(e.getMessage());
+                        throw e; 
+                    }
+                }
+                
+                
+                return this.getProjectById(id);
+            }else{
+                return null;
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+       
+
+
     }
 
 }
