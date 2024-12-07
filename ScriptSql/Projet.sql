@@ -1,3 +1,10 @@
+Drop table  IF EXISTS period cascade;
+Drop table IF EXISTS project cascade;
+Drop table IF EXISTS skills cascade;
+Drop table IF EXISTS requirement cascade;
+Drop table IF EXISTS linkinproject cascade;
+Drop table IF EXISTS ytblink cascade; 
+
 Create Table Period(
     perno SERIAL,
     name varchar(255),
@@ -51,6 +58,7 @@ Create Table Requirement(
         references project (prono),
      Constraint fk_skillRequirement foreign key (skino)
         references skills (skino)
+);
 Create Table Period(
     perno SERIAL,
     name varchar(255),
@@ -96,14 +104,12 @@ Create Table ytbLink(
     Constraint fk_ytbno_project foreign key (prono)
 	references project(prono)
 );
-Create Table Requirement(
+Create Table requirement(
     skino SERIAL,
     prono SERIAL,
     Constraint pk_ProjectSkill primary key(skino,prono),
-     Constraint fk_project foreign key (prono)
+     Constraint fk_projectRequirement foreign key (prono)
         references project (prono),
      Constraint fk_skillRequirement foreign key (skino)
         references skills (skino)
-
-)
-)
+);
